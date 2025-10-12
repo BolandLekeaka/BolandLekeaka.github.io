@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Oswald:wght@600&display=swap');
+
+/* make image flexiable */
+img{
+    max-width: 100%;
+}
+/* mobile first design */
+body{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+   
+    
+    /* font changes */
+    font-family: 'Oswald', sans-serif;
+    color:antiquewhite;
+        
+    background-color:black;
+}
+
+header, footer{
+    background-color: crimson;
+    border-radius: 0.625em;
+   /* box-shadow: 0.3125em 0.3125em 0.125em antiquewhite; */
+    text-align: center;
+}
+
+nav{
+/*    float: right;*/
+    font-size: 1.5em;
+    
+}
+
+nav li{
+   list-style-type: none;
+/*    display: inline;*/
+    
+    /* spread outs list items*/
+    margin: 0.750em;
+    padding: 0.875em;
+    
+}
+nav ul{
+    padding: 0;
+}
+h1{
+    font-family: 'Merriweather', serif;
+    color: antiquewhite;
+    
+}
+
+h2{
+    font-family: 'Merriweather', serif;
+    color: antiquewhite;
+    
+}
+
+p{
+    font-family: 'Merriweather', serif;
+    color: antiquewhite;
+    
+}
+
+footer{
+    text-align: center;
+    word-spacing: 5px;
+}
+.desktop{
+    display: none;
+}
+
+/* tablet design */
+@media only screen and (min-width:481px){
+    nav li {
+        display:inline;
+        padding: 0;
+    }
+    body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+    footer{
+    margin-top: auto;
+        text-align: center;
+    word-spacing: 5px;
+}
+}
+/* destop design */ 
+@media only screen and (min-width:1024px){
+    body{
+        width: 80%;
+    }
+    header, footer{
+         background-color: crimson;
+    border-radius: 0.625em;
+    box-shadow: 0.3125em 0.3125em 0.125em antiquewhite;
+        
+    }
+    header{
+       text-align: left;
+    
+    }
+    nav{
+        float: right;
+    }
+    nav li{
+   list-style-type: none;
+    display: inline;
+    
+    /* spread outs list items*/
+    margin: 0.750em;
+    padding: 0.875em;
+    
+}
+    body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+    footer{
+    margin-top: auto;
+        text-align: center;
+    word-spacing: 5px;
+}
+    .mobile{
+        display: none;
+    }
+    .desktop{
+        display: inline;
+    }
+}
+/* table styles */
+table, tr, td, th{
+    border: 1px solid white;
+    border-collapse: collapse;
+    height: 100%;
+}
+
+table{
+    width: 100%;
+    
+    
+}
+
+caption{
+    font-style: italic;
+    font-weight: bold;
+    padding-top: 2em;
+    padding-bottom: 1em;
+    
+}
+
+th{
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: left;
+    background-color: crimson;
+}
+
+tr:hover{
+    background-color: gray;
+    
+}
