@@ -1,1 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTTP History & Core Design</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Web Evolution</a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="http-history.html" class="active">HTTP History</a>
+      <a href="http2-http3.html">HTTP/2 & HTTP/3</a>
+      <a href="key-concepts.html">Key Concepts</a>
+      <a href="references.html">References</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <article class="prose">
+      <h1>HTTP History & Core Design</h1>
+      <p>
+        Early HTTP (0.9–1.0) enabled simple retrieval of documents and images. HTTP/1.1
+        standardized persistent connections and caching directives but remained
+        <em>stateless</em>, meaning each request is processed without remembering prior ones.
+        Developers layered cookies and sessions to deliver shopping carts, logins, and personalization.
+      </p>
+
+      <h2>Request Methods</h2>
+      <ul>
+        <li><strong>GET</strong> – Retrieve a resource.</li>
+        <li><strong>POST</strong> – Submit data for processing (e.g., forms).</li>
+        <li><strong>PUT</strong>/<strong>PATCH</strong> – Replace/modify an existing resource.</li>
+        <li><strong>DELETE</strong> – Remove a resource.</li>
+      </ul>
+
+      <figure class="figure">
+        <img src="https://via.placeholder.com/900x400?text=Client+%E2%86%94+Server+over+HTTP" alt="Diagram of a browser-client communicating with a web server over HTTP" />
+        <figcaption>High-level client–server flow via HTTP.</figcaption>
+      </figure>
+
+      <h2>Challenges with HTTP/1.1</h2>
+      <p>
+        Heavy pages require many requests. With one outstanding request per TCP connection,
+        sites suffered head-of-line blocking, domain sharding hacks, and slow loads.
+      </p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <small>&copy; 2025 Web Evolution</small>
+  </footer>
+</body>
+</html>
 
