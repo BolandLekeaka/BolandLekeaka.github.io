@@ -1,1 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTTP/2 & HTTP/3: Performance & Security</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Web Evolution</a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="http-history.html">HTTP History</a>
+      <a href="http2-http3.html" class="active">HTTP/2 & HTTP/3</a>
+      <a href="key-concepts.html">Key Concepts</a>
+      <a href="references.html">References</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <article class="prose">
+      <h1>HTTP/2 & HTTP/3</h1>
+      <p>
+        HTTP/2 (2015) brought multiplexing, header compression (HPACK), and server push,
+        dramatically improving efficiency. HTTP/3 (2022) runs over QUIC (UDP), moves
+        TLS 1.3 into the transport, and eliminates TCP’s head-of-line blocking.
+      </p>
+
+      <h2>Version Comparison</h2>
+      <div class="table-wrap">
+        <table>
+          <caption>Key Differences Across HTTP Versions</caption>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>HTTP/1.1</th>
+              <th>HTTP/2</th>
+              <th>HTTP/3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Transport</td>
+              <td>TCP</td>
+              <td>TCP</td>
+              <td>QUIC (UDP)</td>
+            </tr>
+            <tr>
+              <td>Multiplexing</td>
+              <td>No (1 outstanding req/conn)</td>
+              <td>Yes (streams)</td>
+              <td>Yes (streams; no TCP HoL)</td>
+            </tr>
+            <tr>
+              <td>Header Compression</td>
+              <td>None</td>
+              <td>HPACK</td>
+              <td>QPACK</td>
+            </tr>
+            <tr>
+              <td>TLS</td>
+              <td>Optional; separate handshake</td>
+              <td>Common; TLS 1.2/1.3</td>
+              <td>TLS 1.3 integrated</td>
+            </tr>
+            <tr>
+              <td>Server Push</td>
+              <td>No</td>
+              <td>Yes (limited use today)</td>
+              <td>Re-evaluated/less emphasized</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Deployment & Adoption</h2>
+      <ul>
+        <li>Supported by major browsers and CDNs.</li>
+        <li>Beneficial for high-latency and mobile networks.</li>
+        <li>Faster connection setup and improved loss recovery with QUIC.</li>
+      </ul>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <small>&copy; 2025 Web Evolution</small>
+  </footer>
+</body>
+</html>
 
