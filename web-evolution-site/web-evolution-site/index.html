@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Web Evolution: The Role and Evolution of HTTP</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <meta name="description" content="A concise site introducing HTTP's history, role, and evolution to HTTP/2 and HTTP/3." />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Web Evolution</a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="index.html" class="active">Home</a>
+      <a href="http-history.html">HTTP History</a>
+      <a href="http2-http3.html">HTTP/2 & HTTP/3</a>
+      <a href="key-concepts.html">Key Concepts</a>
+      <a href="references.html">References</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <article class="hero">
+      <h1>The Role and Evolution of HTTP</h1>
+      <p class="subtitle">From HTTP/0.9 to HTTP/3 over QUIC—how the web’s application protocol keeps the internet usable, fast, and secure.</p>
+      <div class="key-terms">
+        <h2>Key Terms</h2>
+        <ul>
+          <li><strong>HTTP</strong> – Application-layer protocol for web communication.</li>
+          <li><strong>Stateless</strong> – Each request is independent; no built-in memory of prior requests.</li>
+          <li><strong>HTTP/2</strong> – Adds multiplexing, header compression, and server push.</li>
+          <li><strong>HTTP/3</strong> – Runs over QUIC (UDP) to reduce latency and HoL blocking.</li>
+          <li><strong>TLS 1.3</strong> – Modern encryption for confidentiality and integrity.</li>
+        </ul>
+      </div>
+    </article>
+
+    <section class="grid two">
+      <div class="card">
+        <h3>Abstract</h3>
+        <p>
+          HTTP has powered the World Wide Web since the early 1990s. Its stateless,
+          human-readable design made it easy to adopt and extend; modern versions (HTTP/2
+          and HTTP/3) improve performance, security, and reliability for rich applications,
+          streaming, and global-scale platforms.
+        </p>
+      </div>
+      <nav class="card" aria-labelledby="toc-title" id="toc">
+        <h3 id="toc-title">Table of Contents</h3>
+        <ol>
+          <li><a href="http-history.html">Origins & Core Design (HTTP/0.9–1.1)</a></li>
+          <li><a href="http2-http3.html">Modern Performance: HTTP/2 & HTTP/3</a></li>
+          <li><a href="key-concepts.html">5–7 Key Concepts Explained</a></li>
+          <li><a href="references.html">References & Learning Resources</a></li>
+          <li><a href="about.html">About the Author & Project</a></li>
+        </ol>
+      </nav>
+    </section>
+
+    <section class="callouts grid three">
+      <article class="card">
+        <h3>Why HTTP still matters</h3>
+        <p>It’s the common language of browsers, servers, APIs, and even IoT devices.</p>
+      </article>
+      <article class="card">
+        <h3>Performance evolution</h3>
+        <p>HTTP/2 introduces multiplexing; HTTP/3 moves to QUIC to avoid transport-level bottlenecks.</p>
+      </article>
+      <article class="card">
+        <h3>Security by default</h3>
+        <p>TLS 1.3 and encrypted-by-default deployments make modern HTTP safer for users.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>&copy; 2025 Web Evolution • Last updated Oct 12, 2025 • Kennesaw State University</small>
+  </footer>
+</body>
+</html>
