@@ -8,8 +8,14 @@
   <meta name="description" content="A concise site introducing HTTP's history, role, and evolution to HTTP/2 and HTTP/3." />
 </head>
 <body>
+  <!-- Page Structure: 
+       - Sticky header with brand + consistent main navigation
+       - <main> container holds page-specific content
+       - Footer includes a required class-project note and link to course site
+  -->
   <header class="site-header">
     <a class="brand" href="index.html">Web Evolution</a>
+    <!-- Main navigation reused across pages -->
     <nav class="main-nav" aria-label="Main">
       <a href="index.html" class="active">Home</a>
       <a href="http-history.html">HTTP History</a>
@@ -17,9 +23,11 @@
       <a href="key-concepts.html">Key Concepts</a>
       <a href="references.html">References</a>
       <a href="about.html">About</a>
+          <a href="course.html">Course</a>
     </nav>
   </header>
 
+  <!-- Main content container; grid cards used for layout -->
   <main class="container">
     <article class="hero">
       <h1>The Role and Evolution of HTTP</h1>
@@ -55,7 +63,8 @@
           <li><a href="references.html">References & Learning Resources</a></li>
           <li><a href="about.html">About the Author & Project</a></li>
         </ol>
-      </nav>
+            <a href="course.html">Course</a>
+    </nav>
     </section>
 
     <section class="callouts grid three">
@@ -75,7 +84,8 @@
   </main>
 
   <footer class="site-footer">
-    <small>&copy; 2025 Web Evolution • Last updated Oct 12, 2025 • Kennesaw State University</small>
-  </footer>
+    <small>&copy; 2025 Web Evolution</small>
+    <p class="class-note">This website is a class project for <a href="https://ksuweb.github.io/IT3203/" target="_blank" rel="noopener">IT3203 — Intro to Web Development</a> at Kennesaw State University.</p>
+</footer>
 </body>
 </html>
