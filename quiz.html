@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HTTP Self-Assessment Quiz</title>
   <link rel="stylesheet" href="css/style.css" />
-  <meta name="description" content="Test your understanding of HTTP history, HTTP/2, and HTTP/3 with this quiz." />
+  <meta name="description" content="Test your understanding of HTTP history, HTTP/2, and HTTP/3 with this self-assessment quiz." />
 </head>
 <body>
   <header class="site-header">
@@ -25,13 +25,14 @@
     <article class="prose">
       <h1>HTTP Self-Assessment Quiz</h1>
       <p>
-        This short quiz checks your understanding of HTTP history, HTTP/1.1, HTTP/2,
-        and HTTP/3 after reading the site’s content. Answer all questions, then submit
-        to see your score and feedback.
+        Use this quiz to check your understanding of the material from:
+        <em>HTTP History</em>, <em>HTTP/2 &amp; HTTP/3</em>, and <em>Key Concepts</em>.
+        Answer all questions, then submit to see your score and detailed feedback.
       </p>
 
+      <!-- QUIZ FORM: all questions live inside this form -->
       <form id="http-quiz" class="card quiz-form">
-        <!-- Q1: Fill-in-the-blank -->
+        <!-- Q1: Fill-in-the-blank (stateless) -->
         <fieldset class="question">
           <legend>1. Fill in the blank</legend>
           <p>
@@ -43,10 +44,13 @@
           <div class="feedback" id="q1-feedback"></div>
         </fieldset>
 
-        <!-- Q2: Multiple-choice (single correct) -->
+        <!-- Q2: Multiple choice (HTTP/1.1 feature) -->
         <fieldset class="question">
           <legend>2. HTTP history</legend>
-          <p>Which HTTP version standardized persistent connections and caching directives?</p>
+          <p>
+            Which HTTP version standardized persistent connections and caching directives,
+            becoming the long-lived “workhorse” of the web?
+          </p>
           <label class="option">
             <input type="radio" name="q2" value="0.9" />
             HTTP/0.9
@@ -66,12 +70,12 @@
           <div class="feedback" id="q2-feedback"></div>
         </fieldset>
 
-        <!-- Q3: Multiple-choice (single correct) -->
+        <!-- Q3: Multiple choice (HTTP/2 multiplexing) -->
         <fieldset class="question">
           <legend>3. HTTP/2 feature</legend>
           <p>
-            Which feature of HTTP/2 helps reduce latency by allowing multiple parallel
-            requests on a single connection?
+            According to the HTTP/2 page, which feature helps reduce latency by allowing
+            multiple parallel requests on a single connection?
           </p>
           <label class="option">
             <input type="radio" name="q3" value="cookies" />
@@ -92,11 +96,12 @@
           <div class="feedback" id="q3-feedback"></div>
         </fieldset>
 
-        <!-- Q4: Multiple-choice (single correct) -->
+        <!-- Q4: Multiple choice (HTTP/3 transport / QUIC) -->
         <fieldset class="question">
           <legend>4. HTTP/3 transport</legend>
           <p>
-            HTTP/3 runs on top of which transport protocol?
+            The site explains that HTTP/3 runs over QUIC. QUIC, in turn, is built on top of
+            which transport protocol?
           </p>
           <label class="option">
             <input type="radio" name="q4" value="tcp" />
@@ -104,7 +109,7 @@
           </label>
           <label class="option">
             <input type="radio" name="q4" value="udp" />
-            UDP (QUIC)
+            UDP
           </label>
           <label class="option">
             <input type="radio" name="q4" value="icmp" />
@@ -117,7 +122,7 @@
           <div class="feedback" id="q4-feedback"></div>
         </fieldset>
 
-        <!-- Q5: Multi-selection (more than one correct) -->
+        <!-- Q5: Multi-selection (HTTP/3 benefits: QUIC, TLS 1.3, HoL) -->
         <fieldset class="question">
           <legend>5. Multi-select: HTTP/3 benefits</legend>
           <p>Select <strong>all</strong> statements that are true about HTTP/3.</p>
@@ -140,12 +145,14 @@
           <div class="feedback" id="q5-feedback"></div>
         </fieldset>
 
+        <!-- ACTION BUTTONS -->
         <div class="quiz-actions">
           <button type="submit" class="btn">Submit Quiz</button>
           <button type="button" id="reset-quiz" class="btn btn-secondary">Reset Quiz</button>
         </div>
       </form>
 
+      <!-- RESULTS SUMMARY WILL BE INJECTED HERE BY JAVASCRIPT -->
       <section id="quiz-results" class="card quiz-results" aria-live="polite"></section>
     </article>
   </main>
@@ -154,35 +161,37 @@
     <small>&copy; 2025 Web Evolution • HTTP Quiz</small>
   </footer>
 
+  <!-- JAVASCRIPT: grading logic and dynamic feedback -->
   <script>
-    // Simple HTTP quiz grading logic
-    // Each question is worth 1 point; total 5 points.
-    // Pass/fail threshold: 3 or more correct answers.
+    /*
+      HTTP Quiz Script
+      -----------------
+      - Grades 5 questions based on answers from the site content
+      - Shows per-question feedback (correct/incorrect + correct answer)
+      - Shows overall pass/fail result and total score
+      - Provides a Reset button to clear all inputs and results
+    */
 
     document.addEventListener('DOMContentLoaded', function () {
       const form = document.getElementById('http-quiz');
       const resetBtn = document.getElementById('reset-quiz');
       const resultsBox = document.getElementById('quiz-results');
 
-      // Correct answers configuration
+      // Configuration: correct answers (based on milestone 1 content)
       const correctAnswers = {
-        q1Text: ['stateless'], // we will compare in a case-insensitive way
-        q2: '1.1',
-        q3: 'multiplexing',
-        q4: 'udp',
-        q5: ['quic', 'tls13', 'hol'] // multi-select, all three must be selected
+        q1Text: ['stateless'],   // HTTP is a stateless protocol
+        q2: '1.1',               // HTTP/1.1 standardized persistent connections & caching
+        q3: 'multiplexing',      // HTTP/2 multiplexing
+        q4: 'udp',               // QUIC runs over UDP
+        q5: ['quic', 'tls13', 'hol'] // all three must be checked for full credit
       };
 
-      /**
-       * Helper to normalize free-text answers (trim + lowercase).
-       */
+      // Helper: normalize free-text input for comparison
       function normalize(text) {
         return text.trim().toLowerCase();
       }
 
-      /**
-       * Clear all per-question feedback and the summary box.
-       */
+      // Helper: clear per-question feedback and summary results
       function clearFeedback() {
         const feedbackEls = form.querySelectorAll('.feedback');
         feedbackEls.forEach(el => {
@@ -193,9 +202,7 @@
         resultsBox.classList.remove('has-results', 'pass', 'fail');
       }
 
-      /**
-       * Handle quiz submission: grade questions and render feedback.
-       */
+      // Handle quiz submission: prevent default form submit and grade locally
       form.addEventListener('submit', function (event) {
         event.preventDefault();
         clearFeedback();
@@ -203,7 +210,7 @@
         let score = 0;
         const details = [];
 
-        // Question 1: text input
+        // ----- Question 1: fill-in-the-blank -----
         const q1Input = document.getElementById('q1-text');
         const q1Value = normalize(q1Input.value);
         const isQ1Correct = correctAnswers.q1Text.includes(q1Value);
@@ -222,7 +229,7 @@
           correctAnswer: 'stateless'
         });
 
-        // Question 2: radios
+        // ----- Question 2: multiple-choice (HTTP/1.1) -----
         const q2Feedback = document.getElementById('q2-feedback');
         const q2Selected = form.querySelector('input[name="q2"]:checked');
         let q2User = '(no answer)';
@@ -233,7 +240,7 @@
           if (isQ2Correct) score += 1;
         }
         q2Feedback.textContent = isQ2Correct
-          ? 'Correct: HTTP/1.1 standardized persistent connections and caching.'
+          ? 'Correct: HTTP/1.1 introduced persistent connections and better caching.'
           : 'Incorrect. Correct answer: HTTP/1.1.';
         q2Feedback.classList.add(isQ2Correct ? 'correct' : 'incorrect');
 
@@ -244,7 +251,7 @@
           correctAnswer: 'HTTP/1.1'
         });
 
-        // Question 3: radios
+        // ----- Question 3: multiple-choice (HTTP/2 multiplexing) -----
         const q3Feedback = document.getElementById('q3-feedback');
         const q3Selected = form.querySelector('input[name="q3"]:checked');
         let q3User = '(no answer)';
@@ -255,7 +262,7 @@
           if (isQ3Correct) score += 1;
         }
         q3Feedback.textContent = isQ3Correct
-          ? 'Correct: multiplexing allows multiple parallel streams on one connection.'
+          ? 'Correct: multiplexing lets multiple streams share one connection.'
           : 'Incorrect. Correct answer: multiplexing.';
         q3Feedback.classList.add(isQ3Correct ? 'correct' : 'incorrect');
 
@@ -266,45 +273,48 @@
           correctAnswer: 'multiplexing'
         });
 
-        // Question 4: radios
+        // ----- Question 4: multiple-choice (HTTP/3 over UDP/QUIC) -----
         const q4Feedback = document.getElementById('q4-feedback');
         const q4Selected = form.querySelector('input[name="q4"]:checked');
         let q4User = '(no answer)';
         let isQ4Correct = false;
         if (q4Selected) {
-          q4User = q4Selected.value === 'udp' ? 'UDP (QUIC)' : q4Selected.value.toUpperCase();
+          // Show a nicer label for UDP
+          q4User = q4Selected.value === 'udp'
+            ? 'UDP (via QUIC)'
+            : q4Selected.value.toUpperCase();
           isQ4Correct = q4Selected.value === correctAnswers.q4;
           if (isQ4Correct) score += 1;
         }
         q4Feedback.textContent = isQ4Correct
-          ? 'Correct: HTTP/3 runs over QUIC on top of UDP.'
-          : 'Incorrect. Correct answer: UDP (QUIC).';
+          ? 'Correct: HTTP/3 uses QUIC, which is built on top of UDP.'
+          : 'Incorrect. Correct answer: UDP (via QUIC).';
         q4Feedback.classList.add(isQ4Correct ? 'correct' : 'incorrect');
 
         details.push({
           label: 'Question 4',
           correct: isQ4Correct,
           yourAnswer: q4User,
-          correctAnswer: 'UDP (QUIC)'
+          correctAnswer: 'UDP (via QUIC)'
         });
 
-        // Question 5: multi-select checkboxes
+        // ----- Question 5: multi-selection (HTTP/3 benefits) -----
         const q5Feedback = document.getElementById('q5-feedback');
-        const q5Checked = Array.from(form.querySelectorAll('input[name="q5"]:checked')).map(
-          (el) => el.value
-        );
-        let isQ5Correct = false;
-        // Check: user selected exactly the set of correct answers (no more, no less)
+        const q5Checked = Array.from(
+          form.querySelectorAll('input[name="q5"]:checked')
+        ).map((el) => el.value);
+
+        // Compare sorted arrays: user must select exactly quic + tls13 + hol
         const expected = correctAnswers.q5.slice().sort().join(',');
         const actual = q5Checked.slice().sort().join(',');
-        isQ5Correct = actual === expected;
+        const isQ5Correct = actual === expected;
         if (isQ5Correct) score += 1;
 
         const prettyUserAnswers = q5Checked.length
           ? q5Checked
               .map((val) => {
                 if (val === 'quic') return 'Runs over QUIC (UDP)';
-                if (val === 'tls13') return 'Integrates TLS 1.3';
+                if (val === 'tls13') return 'Integrates TLS 1.3 into the transport';
                 if (val === 'more-tcp') return 'Requires more TCP connections (incorrect)';
                 if (val === 'hol') return 'Helps avoid head-of-line blocking';
                 return val;
@@ -325,10 +335,10 @@
             'Runs over QUIC; integrates TLS 1.3; helps avoid head-of-line blocking.'
         });
 
-        // Compute pass/fail
+        // ----- Overall result: compute percentage + pass/fail -----
         const totalQuestions = 5;
         const percentage = Math.round((score / totalQuestions) * 100);
-        const passed = score >= 3;
+        const passed = score >= 3; // pass threshold
 
         // Build summary HTML
         let summaryHtml = `
@@ -356,11 +366,12 @@
 
         summaryHtml += '</ul>';
 
+        // Inject summary HTML into the page and style it
         resultsBox.innerHTML = summaryHtml;
         resultsBox.classList.add('has-results', passed ? 'pass' : 'fail');
       });
 
-      // Reset button clears form inputs and all results
+      // Reset button: clear all inputs and feedback without reloading the page
       resetBtn.addEventListener('click', function () {
         form.reset();
         clearFeedback();
