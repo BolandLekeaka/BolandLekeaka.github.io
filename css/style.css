@@ -300,3 +300,55 @@ img { max-width: 100%; height: auto; display: block; }
 .detail-item.detail-incorrect {
   border-color: rgba(248, 113, 113, 0.7);
 }
+
+/* === Milestone 3 Additions: Responsive Enhancements === */
+
+/* Mobile-first improvements for screens <= 480px */
+@media (max-width: 480px) {
+
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .main-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .main-nav a {
+    width: 100%;
+    padding: 0.7rem;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  table, th, td {
+    font-size: 0.85rem;
+  }
+}
+
+/* Enhance layout for medium screens (tablet) */
+@media (max-width: 1024px) {
+  .grid.two {
+    grid-template-columns: 1fr;
+  }
+  .grid.three {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Very large screens (>1400px) center content better */
+@media (min-width: 1400px) {
+  .container {
+    width: min(1200px, 80vw);
+  }
+}
