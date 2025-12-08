@@ -82,6 +82,25 @@
         <li>Beneficial for high-latency and mobile networks.</li>
         <li>Faster connection setup and improved loss recovery with QUIC.</li>
       </ul>
+      
+      <h2>Why HTTP/2 Was Needed</h2>
+<p>
+  Before HTTP/2, websites had grown heavy with images, scripts, and stylesheets.
+  Browsers resorted to techniques such as domain sharding and connection
+  parallelism, which increased overhead. HTTP/2’s multiplexing solved these
+  inefficiencies by enabling multiple streams on one TCP connection, reducing
+  congestion and improving fairness.
+</p>
+
+<h2>Why HTTP/3 Represents a Bigger Shift</h2>
+<p>
+  Unlike HTTP/2, HTTP/3 changes more than application behavior—it modifies
+  transport behavior by adopting QUIC. QUIC's user-space implementation allows
+  faster iteration, connection migration (surviving network changes), and
+  improved loss recovery. This makes HTTP/3 especially valuable for mobile users,
+  Wi-Fi transitions, and high-latency networks.
+</p>
+
     </article>
   </main>
 
